@@ -129,7 +129,7 @@ class DigestAuthenticationTestCase(TestCase):
         # Correct user/password.
         john_doe = User.objects.get(username='johndoe')
         john_doe.set_password('pass')
-        john_doe.save()
+        create_api_key(User, instance=john_doe, created=True)
         request.META['HTTP_AUTHORIZATION'] = python_digest.build_authorization_request(
             john_doe.username,
             request.method,
