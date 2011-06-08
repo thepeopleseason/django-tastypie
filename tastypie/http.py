@@ -34,7 +34,14 @@ class HttpNotModified(HttpResponse):
 
 class HttpBadRequest(HttpResponse):
     status_code = 400
-
+    def __init__(self, *args, **kwargs):
+        print "THIS IS THE BAD REQUEST"
+        print "ARGS"
+        print args
+        print "KWARGS"
+        print kwargs
+        print " END OF BAD REQUEST "
+        super(HttpBadRequest, self).__init__(*args, **kwargs)
 
 class HttpUnauthorized(HttpResponse):
     status_code = 401
@@ -62,4 +69,3 @@ class HttpApplicationError(HttpResponse):
 
 class HttpNotImplemented(HttpResponse):
     status_code = 501
-
